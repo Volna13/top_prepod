@@ -1,0 +1,603 @@
+<!-- Page Content -->
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+
+      <!-- Первая колонка -->
+      <div class="col-lg-2 col-sm-1">
+      </div>
+
+      <!-- Вторая колонка -->
+      <div class="col-lg-8 col-sm-10 my-4">
+
+        <div class="alert alert-primary" role="alert">
+          <h5 class="display-5">Приветствуем вас на странице регистрации!</h5>
+          <hr class="my-1">
+          <p class="lead">Для того, чтобы пройти регистрацию, пожалуйста выберите тип пользователя, студент
+            или преподаватель.</p>
+        </div>
+
+        <div class="container">
+          <ul class="nav nav-tabs nav-justified bg-light" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active .bg-light" id="student-tab" data-toggle="tab" href="#student" role="tab"
+                aria-controls="student" aria-selected="true">Студент</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="prepod-tab" data-toggle="tab" href="#prepod" role="tab" aria-controls="prepod"
+                aria-selected="false">Преподаватель</a>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+
+            <!-- Форма регистрации для студента -->
+            <div class="tab-pane fade show active .bg-light" id="student" role="tabpanel" aria-labelledby="student-tab">
+
+              <div class="alert alert-info" role="alert">
+                Вы регистрируетесь как студент!
+              </div>
+
+              <div class="container-fluid">
+                <form action="" method="post">
+                  <div class="form-froup">
+                    <div class="row" id="divRegStud">
+
+                      <div class="col-12">
+                        <div class="form-group row mb-3">
+                          <label for="studentInputSurname" class="col-sm-3 form-label">Ваша фамилия:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="studentInputSurname" id="studentInputSurname"
+                              area-describdby="SurnamelHelp" placeholder="Фамилия" required>
+                            <small id="surnameHelper" class="form-text text-muted">Введите вашу фамилию</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputName" class="col-sm-3 col-form-label">Ваше имя:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="studentInputName" id="studentInputName"
+                              area-describdby="NameHelp" placeholder="Имя">
+                            <small id="emailHelper" class="form-text text-muted">Введите ваше имя</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputPatrnonymic" class="col-sm-3 col-form-label">Ваше отчество:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="studentInputPatrnonymic"
+                              id="studentInputPatrnonymic" area-describdby="patrlHelp" placeholder="Отчество">
+                            <small id="patrlHelp" class="form-text text-muted">Введите ваше отчествто</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputEmail" class="col-sm-3 col-form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="email" class="form-control" name="studentInputEmail" id="studentInputEmail"
+                              area-describdby="emailHelp" placeholder="Email">
+                            <small id="emailHelper" class="form-text text-muted">Введите адресс электроной почты</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputPass" class="col-sm-3 col-form-label">Ваш пароль</label>
+                          <div class="col-sm-9">
+                            <input type="password" class="form-control" name="studentInputPassword"
+                              id="studentInputPassword" placeholder="Пароль">
+                            <small id="PassHelper" class="form-text text-muted">Введите ваш пароль</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputPass" class="col-sm-3 col-form-label">Подтвердите пароль</label>
+                          <div class="col-sm-9">
+                            <input type="password" class="form-control" name="studentInputPassword2"
+                              id="studentInputPassword2" placeholder="Повторите пароль">
+                            <small id="Pass2Helper" class="form-text text-muted">Введите ваш пароль ещё раз</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputRegion" class="col-sm-3 col-form-label">Область</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectRegion" name="studentInputRegion" id="studentInputRegion"
+                              area-describdby="RegionHelp" placeholder="Область" style="width:100%">
+                              <option selected>Выберите область</option>
+                              {{#each regions}}
+                              <option value="{{ this }}"> {{ this }} </option>
+                              {{/each}}
+                            </select>
+                            <small id="emailHelper" class="form-text text-muted">Выберите или введите вашу
+                              область</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputCity" class="col-sm-3 col-form-label">Город</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectCity  js-example-basic-single" name="studentInputCity"
+                              id="studentInputCity" area-describdby="CityHelp" placeholder="Город" style="width:100%">
+                              <option selected>Выберите город</option>
+                              {{#each cities}}
+                              <option value="{{ this }}"> {{ this}} </option>
+                              {{/each}}
+                              </option>
+                            </select>
+                            <small id="emailHelper" class="form-text text-muted">Выберите или введите ваш город</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputUniversity" class="col-sm-3 col-form-label">Учебное заведение</label>
+                          <div class="col-sm-9 selectUniver">
+                            <select class="form-control selectUniversity" name="studentInputUniversity"
+                              id="studentInputUniversity" area-describdby="univerHelp" placeholder="Учебное заведение"
+                              style="width:100%">
+                              <option selected>Выберите учебное заведение</option>
+
+                              {{#each univers}}
+                              <option value="{{ this._id }}"> {{ this.name}} </option>
+                              {{/each}}
+                            </select>
+                            <small id="univerHelper" class="form-text text-muted">Введите или выберите новое название
+                              учебного заведения в котором вы преподаёте, если вы хотите его изменить</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputScience" class="col-sm-3 col-form-label">Наука</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectScience" name="studentInputScience"
+                              id="studentInputScience" area-describdby="ScienceHelp" placeholder="Область знаний"
+                              style="width:100%">
+                              <option selected>Выберите науку</option>
+                              {{#each sciences}}
+                              <option value="{{ this._id }}"> {{ this.name }} </option>
+                              {{/each}}
+                            </select>
+                            <small id="PatrHelper" class="form-text text-muted">Выберите название науки, которую вы
+                              преподаёте, если вы хотите изменить её</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputSpec" class="col-sm-3 col-form-label">Специальность</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectFaculty" id="studentInputSpec" name="studentInputSpec"
+                              area-describdby="SpecHelp" placeholder="Специальность" style="width:100%">
+                              <option selected>Выберите специальность</option>
+                              {{#each specs}}
+                              <option value="{{ this._id }}"> {{ this.name }} </option>
+                              {{/each}}
+                            </select>
+                            <small id="PatrHelper" class="form-text text-muted">Выберите название специалньости, которую
+                              вы преподаёте, если вы хотите изменить её</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="studentInputCourse">На каком вы курсе?</label>
+                          <select type="text" class="form-control" id="examleSelectCourse" area-describdby="courseHelp"
+                            placeholder="Курс">
+                            <option>1 курс</option>
+                            <option>2 курс</option>
+                            <option>3 курс</option>
+                            <option>4 курс</option>
+                            <option>5 курс</option>
+                            <option>6 курс</option>
+                            <option>Выпускник</option>
+                          </select>
+                          <small id="courseHelper" class="form-text text-muted">На каком вы
+                            курсе?</small>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="examleTAdescript">О себе</label>
+                          <textarea type="text" class="form-control mt-3" name="examleTAdescript" id="examleTAdescript"
+                            area-describdby="descriptHelp" placeholder="О себе" rows='8'></textarea>
+                          <small id="descriptHelper" class="form-text text-muted">напишите немного о себе</small>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="alert-danger mt-2" id="errorBlockStud">
+                    </div>
+                    <button type="button" class="btn btn-success my-4" id="regStudent" post>Отправить</button>
+                    <button type="submit" class="btn btn-success my-4" id="auth_stud"
+                      style="display: none">Войти</button>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--/?Форма регистрации для студента -->
+
+            <!-- Форма регистрации для преподавателя -->
+            <div class="tab-pane fade" id="prepod" role="tabpanel" aria-labelledby="prepod-tab">
+              <div class="alert alert-info" role="alert">
+                Вы регистрируетесь как преподаватель!
+              </div>
+              <div class="container-fluid">
+                <form action="models/checkprepod.php" method="post">
+                  <div class="form-froup">
+                    <div class="row">
+
+                      <div class="col-12">
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputSurname" class="col-sm-3 form-label">Ваша фамилия:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="prepodInputSurname"
+                              area-describdby="SurnamelHelp" placeholder="Фамилия" required>
+                            <small id="surnameHelper" class="form-text text-muted">Введите вашу фамилию</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputName" class="col-sm-3 form-label">Ваше имя:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="prepodInputName" area-describdby="NameHelp"
+                              placeholder="Имя" required>
+                            <small id="nameHelper" class="form-text text-muted">Введите ваше имя</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputPatrnonymic" class="col-sm-3 form-label">Ваше отчество:</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" id="prepodInputPatrnonymic"
+                              area-describdby="patrlHelp" placeholder="Отчество" required>
+                            <small id="patrlHelp" class="form-text text-muted">Введите ваше отчествто</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputEmail" class="col-sm-3 form-label">Email</label>
+                          <div class="col-sm-9">
+                            <input type="email" class="form-control" id="prepodInputEmail" area-describdby="emailHelp"
+                              placeholder="Email" required>
+                            <small id="emailHelper" class="form-text text-muted">Введите адресс электроной почты</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputPass" class="col-sm-3 form-label">Ваш пароль</label>
+                          <div class="col-sm-9">
+                            <input type="password" class="form-control" id="prepodInputPassword" placeholder="Пароль"
+                              required>
+                            <small id="PassHelper" class="form-text text-muted">Введите ваш пароль</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputPass2" class="col-sm-3 form-label">Подтвердите пароль</label>
+                          <div class="col-sm-9">
+                            <input type="password" class="form-control" id="prepodInputPassword2" placeholder="Пароль"
+                              required>
+                            <small id="PassHelper" class="form-text text-muted">Введите ваш пароль ещё раз</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputRegion" class="col-sm-3 form-label">Область</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectRegion" name="prepodInputRegion" id="prepodInputRegion"
+                              area-describdby="RegionHelp" placeholder="Область" style="width:100%">
+                              <option selected>Выберите область</option>
+                              {{#each regions}}
+                              <option value="{{ this }}"> {{ this }} </option>
+                              {{/each}}
+                            </select>
+                            <small id="emailHelper" class="form-text text-muted">Выберите или введите вашу
+                              область</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepodInputCity" class="col-sm-3 form-label">Город</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectCity  js-example-basic-single" name="prepodInputCity"
+                              id="prepodInputCity" area-describdby="CityHelp" placeholder="Город" style="width:100%">
+                              <option selected>Выберите город</option>
+                              {{#each cities}}
+                              <option value="{{ this }}"> {{ this}} </option>
+                              {{/each}}
+                            </select>
+                            <small id="emailHelper" class="form-text text-muted">Выберите или введите ваш город</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepUniver" class="col-sm-3 form-label">Учебное заведение</label>
+                          <div class="col-sm-9 selectUniver">
+                            <select class="form-control selectUniversity" id="prepodInputUniversity"
+                              area-describdby="univerHelp" placeholder="Учебное заведение" style="width:100%">
+                              <option selected>Выберите учебное заведение</option>
+                              {{#each univers}}
+                              <option value="{{ this._id }}"> {{ this.name}} </option>
+                              {{/each}}
+                            </select>
+                            <small id="univerHelper" class="form-text text-muted">Введите или выберите новое название
+                              учебного заведения в котором вы преподаёте, если вы хотите его изменить</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepPatr" class="col-sm-3 form-label">Наука</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectScience" id="prepodInputScience"
+                              area-describdby="ScienceHelp" placeholder="Область знаний" style="width:100%">
+                              <option selected>Выберите науку</option>
+                              {{#each sciences}}
+                              <option value="{{ this._id }}"> {{ this.name }} </option>
+                              {{/each}}
+                            </select>
+                            <small id="PatrHelper" class="form-text text-muted">Выберите название науки, которую вы
+                              преподаёте, если вы хотите изменить её</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepPatr" class="col-sm-3 form-label">Специальность</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectFaculty" id="prepodInputSpec" area-describdby="SpecHelp"
+                              placeholder="Специальность" style="width:100%">
+                              <option selected>Выберите специальность</option>
+                              {{#each specs}}
+                              <option value="{{ this._id }}"> {{ this.name }} </option>
+                              {{/each}}
+                            </select>
+                            <small id="PatrHelper" class="form-text text-muted">Выберите название специалньости, которую
+                              вы преподаёте, если вы хотите изменить её</small>
+                          </div>
+                        </div>
+
+                        <div class="form-group row mb-3">
+                          <label for="prepPatr" class="col-sm-3 form-label">Профессия</label>
+                          <div class="col-sm-9">
+                            <select class="form-control selectProf" id="prepodInputProf" area-describdby="PrepHelp"
+                              placeholder="Профессия" style="width:100%">
+                              <option value='Учитель (I-категории)' selected>Учитель (I-категории)</option>
+                              <option value='Учитель (II-категории)'>Учитель (II-категории)</option>
+                              <option value='>Учитель (III-категории)'>Учитель (III-категории)</option>
+                              <option value='Мастер производственного обучения'>Мастер производственного обучения
+                              </option>
+                              <option value='Доктор наук'>Доктор наук</option>
+                              <option value='Доцент'>Доцент</option>
+                              <option value='Профессор'>Профессор</option>
+                            </select>
+                            </select>
+                            <small id="PatrHelper" class="form-text text-muted">Выберите название специалньости, которую
+                              вы преподаёте, если вы хотите изменить её</small>
+                          </div>
+                        </div>
+                        <div class="form-group row mb-3">
+                          <label for="prepodTAdescriptmin">О себе</label>
+                          <textarea type="text" class="form-control mt-3" name="prepodTAdescriptmin"
+                            id="prepodTAdescriptmin" area-describdby="descriptHelp" placeholder="О себе"
+                            rows='5'></textarea>
+                          <small id="descriptHelper" class="form-text text-muted">напишите немного
+                            о себе</small>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="alert-danger mt-2" id="errorBlockPrepod">
+                    </div>
+                    <button type="button" class="btn btn-success my-4" id="regPrepod">Отправить</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--/ Форма регистрации для преподавателя -->
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Третья колонка -->
+      <div class="col-lg-2 col-sm-1">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+
+<!-- Связанные списки преподаватель-->
+{{!-- <script type="text/javascript">
+  $("#prepodInputRegion").change(function () {
+    var region = $(this).val();
+    $("#prepodInputCity").val("empty");
+    $('#prepodInputCity').trigger('change');
+    $("#prepodInputCity option").attr('disabled', false);
+    $("#prepodInputCity").find('[data-region!="' + region + '"]').attr('disabled', 'disabled');
+  });
+
+  $("#prepodInputCity").change(function () {
+    var city = $(this).val();
+    $("#prepodInputUniversity").val("empty");
+    $('#prepodInputUniversity').trigger('change');
+    $("#prepodInputUniversity option").attr('disabled', false);
+    $("#prepodInputUniversity").find('[data-city!="' + city + '"]').attr('disabled', 'disabled');
+  });
+
+  $("#prepodInputScience").change(function () {
+    var science = $(this).val();
+    $("#prepodInputSpec").val("empty");
+    $('#prepodInputSpec').trigger('change');
+    $("#prepodInputSpec option").attr('disabled', false);
+    $("#prepodInputSpec").find('[data-science!="' + science + '"]').attr('disabled', 'disabled');
+  });
+</script> --}}
+
+<!-- Связанные списки студент -->
+{{!-- <script type="text/javascript">
+  $("#studentInputRegion").change(function () {
+    var region = $(this).val();
+    $("#studentInputCity").val("empty");
+    $('#studentInputCity').trigger('change');
+    $("#studentInputCity option").attr('disabled', false);
+    $("#studentInputCity").find('[data-region!="' + region + '"]').attr('disabled', 'disabled');
+  });
+
+  $("#studentInputCity").change(function () {
+    var city = $(this).val();
+    $("#studentInputUniversity").val("empty");
+    $('#studentInputUniversity').trigger('change');
+    $("#studentInputUniversity option").attr('disabled', false);
+    $("#studentInputUniversity").find('[data-city!="' + city + '"]').attr('disabled', 'disabled');
+  });
+
+  $("#studentInputScience").change(function () {
+    var science = $(this).val();
+    $("#studentInputSpec").val("empty");
+    $('#studentInputSpec').trigger('change');
+    $("#studentInputSpec option").attr('disabled', false);
+    $("#studentInputSpec").find('[data-science!="' + science + '"]').attr('disabled', 'disabled');
+  });
+</script> --}}
+
+<script type="text/javascript">
+  $("#studentInputUniversity").select2({
+    tags: true
+  });
+  $("#studentInputScience").select2({
+    tags: true
+  });
+  $("#studentInputSpec").select2({
+    tags: true
+  });
+
+  $("#studentInputCity").select2({
+    tags: true
+  });
+  $("#studentInputRegion").select2({
+    tags: true
+  });
+
+  $("#prepodInputCity").select2({
+    tags: true
+  });
+
+  $("#prepodInputRegion").select2({
+    tags: true
+  });
+
+  $("#prepodInputUniversity").select2({
+    tags: true
+  });
+
+  $("#prepodInputScience").select2({
+
+    tags: true
+  });
+
+  $("#prepodInputSpec").select2({
+    tags: true
+  });
+</script>
+
+<!-- Регистарция студента -->
+<script type="text/javascript">
+  $('#regStudent').click(function () {
+    var surname = $('#studentInputSurname').val();
+    var name = $('#studentInputName').val();
+    var patr = $('#studentInputPatrnonymic').val();
+    var email = $('#studentInputEmail').val();
+    var pass = $('#studentInputPassword').val();
+    var pass2 = $('#studentInputPassword2').val();
+    var region = $('#studentInputRegion').val();
+    var city = $('#studentInputCity').val();
+    var univer = $('#studentInputUniversity').val();
+    var science = $('#studentInputScience').val();
+    var spec = $('#studentInputSpec').val();
+    var course = $('#examleSelectCourse').val();
+    var descript = $('#examleTAdescript').val();
+    $.ajax({
+      url: 'signup/student',
+      type: 'POST',
+      cache: false,
+      data: {
+        'studentInputSurname': surname,
+        'studentInputName': name,
+        'studentInputPatrnonymic': patr,
+        'studentInputEmail': email,
+        'studentInputPassword': pass,
+        'studentInputPassword2': pass2,
+        'studentInputRegion': region,
+        'studentInputCity': city,
+        'studentInputUniversity': univer,
+        'studentInputScience': science,
+        'studentInputSpec': spec,
+        'examleSelectCourse': course,
+        'examleTAdescript': descript
+      },
+      dataType: 'html',
+      success: function (data) {
+        $('#errorBlockStud').innerHTML = data;
+        if (data == 'Готово') {
+          $('#regStudent').text('Всё готово');
+          window.location.href = "signin.php";
+          $('#errorBlockStud').hide();
+        } else
+          $('#errorBlockStud').show();
+        $('#errorBlockStud').text(data);
+      }
+    })
+  });
+</script>
+
+<!-- Регистарция препода -->
+<script type="text/javascript">
+  $('#regPrepod').click(function () {
+    var psurname = $('#prepodInputSurname').val();
+    var pname = $('#prepodInputName').val();
+    var ppatr = $('#prepodInputPatrnonymic').val();
+    var pemail = $('#prepodInputEmail').val();
+    var ppass = $('#prepodInputPassword').val();
+    var ppass2 = $('#prepodInputPassword2').val();
+    var region = $('#prepodInputRegion').val();
+    var city = $('#prepodInputCity').val();
+    var puniver = $('#prepodInputUniversity').val();
+    var pscience = $('#prepodInputScience').val();
+    var pspec = $('#prepodInputSpec').val();
+    var pdescriptmin = $('#prepodTAdescriptmin').val();
+    var pprof = $('#prepodInputProf').val();
+    $.ajax({
+      url: 'signup/prepod',
+      type: 'POST',
+      cache: false,
+      data: {
+        'prepodInputSurname': psurname,
+        'prepodInputName': pname,
+        'prepodInputPatrnonymic': ppatr,
+        'prepodInputEmail': pemail,
+        'prepodInputPassword': ppass,
+        'prepodInputPassword2': ppass2,
+        'prepodInputRegion': region,
+        'prepodInputCity': city,
+        'prepodInputUniversity': puniver,
+        'prepodInputScience': pscience,
+        'prepodInputSpec': pspec,
+        'prepodTAdescriptmin': pdescriptmin,
+        'prepodInputProf': pprof
+      },
+      dataType: 'html',
+      success: function (data) {
+        $('#errorBlockPrepod').innerHTML = data;
+        if (data == 'Готово') {
+          $('#regprepod').text('Всё готово');
+          $('#errorBlockPrepod').hide();
+          window.location.href = "/";
+        } else
+          $('#errorBlockPrepod').show();
+        $('#errorBlockPrepod').text(data);
+      }
+    })
+  });
+</script>

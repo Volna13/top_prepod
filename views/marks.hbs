@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <main>
+    <div class="container">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <? foreach ($marks[0] as $question) : ?>
+            <th scope="col"><span flow="left" tooltip="<?= $question["text"] ?>"><?= $question["num"] ?></span> </th>
+            <? endforeach ?>
+          </tr>
+          <? foreach ($marks as $mark) : ?>
+          <tr>
+            <td>
+              <? if ($mark[0]["anon"]) : ?>
+              <span>Аноним</span>
+              <? else : ?>
+              <span flow="left"
+                tooltip="Регион:<?= $mark[0]['region'] ?>; Город: <?= $mark[0]["city"] ?>;Область наук: <?= $mark[0]["science"] ?>; Специальность: <?= $mark[0]["spec"] ?>; Университет: <?= $mark[0]["univer"] ?>;">
+                <?= $mark[0]["surname"] ?> <?= $mark[0]["name"] ?> <?= $mark[0]["name"] ?>
+              </span>
+              <? endif ?>
+            </td>
+            <? foreach ($mark as $answer) : ?>
+            <td><?= $answer["value"] ?></td>
+            <? endforeach ?>
+          </tr>
+          <? endforeach ?>
+        </thead>
+      </table>
+    </div>
+
+  </main>
+</div>
+<!--theme-layout end-->

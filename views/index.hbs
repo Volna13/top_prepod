@@ -1,0 +1,239 @@
+<div class="wrapper">
+  <div class="search-sec">
+    <div class="container">
+      <div class="search-box">
+        <form action="javascript:void(null);">
+          <input type="text" name="search" id="search-prepod-input" placeholder="Поиск преподавателя по ФИО">
+          <button type="submit" id="search-prepod-btn">Search</button>
+        </form>
+      </div>
+      <!--search-box end-->
+    </div>
+  </div>
+  <!--search-sec end-->
+  <main>
+    <div class="main-section">
+      <div class="container">
+        <div class="main-section-data">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="filter-secs">
+                <div class="filter-heading">
+                  <div style="max-width:600px" class="d-flex flex-column">
+                    <h3>Сортировать по</h3>
+                    <select id="sort-select">
+                      <option value="fio">ФИО</option>
+                      <option value="region">Области</option>
+                      <option value="city">Городу</option>
+                      <option value="univer">Учебному заведению</option>
+                      <option value="science">Области наук</option>
+                      <option value="spec">Специальности наук</option>
+                      <option value="profession">Профессии</option>
+                      <option value="markdesc">Рейтинг по убыванию</option>
+                      <option value="mark">Рейтинг по возрастанию</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="filter-heading d-flex flex-column">
+                  <div>
+                    <h3>Фильры</h3>
+                    <a href="/" title="">Очистить все</a>
+                  </div>
+                  <button class="btn btn-success" id="btn-use-filters">Применить фильтры</button>
+                </div>
+                <!--filter-heading end-->
+                <div class="paddy">
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Область</h3>
+                      <a href="#" onclick="clearFilter('region-select')">Clear</a>
+                    </div>
+                    <form class="job-tp" id="region-form">
+                      <select id="region-select" multiple="multiple">
+                        {{#each regions}}
+                        <option value="{{ this }}"> {{ this }} </option>
+                        {{/each}}
+                      </select>
+                    </form>
+                  </div>
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Город</h3>
+                      <a href="#" onclick="clearFilter('cities-select')">Clear</a>
+                    </div>
+                    <form class="job-tp">
+                      <select id="cities-select" multiple>
+                        {{#each cities}}
+                        <option value="{{ this }}"> {{ this }} </option>
+                        {{/each}}
+                      </select>
+
+                    </form>
+                  </div>
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Учебное заведение</h3>
+                      <a href="#" onclick="clearFilter('univer-select')">Clear</a>
+                    </div>
+                    <form class="job-tp">
+                      <select style="max-width:600px" id="univer-select" multiple disabled>
+                        {{#each univers}}
+                        <option value="{{ this }}"> {{ this }} </option>
+                        {{/each}}
+                      </select>
+
+                    </form>
+                  </div>
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Направление науки</h3>
+                      <a href="#" onclick="clearFilter('science-select')">Clear</a>
+                    </div>
+                    <form class="job-tp">
+                      <select id="science-select" multiple>
+                        {{#each sciences}}
+                        <option value="{{ this }}"> {{ this }} </option>
+                        {{/each}}
+                      </select>
+
+                    </form>
+                  </div>
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Специальность</h3>
+                      <a href="#" onclick="clearFilter('spec-select')">Clear</a>
+                    </div>
+                    <form class="job-tp">
+                      <select id="spec-select" multiple disabled>
+                        {{#each specs}}
+                        <option value="{{ this }}"> {{ this }} </option>
+                        {{/each}}
+                      </select>
+
+                    </form>
+                  </div>
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Учённая степень</h3>
+                      <a href="#" onclick="clearFilter('prof-select')">Clear</a>
+                    </div>
+                    <form class="job-tp">
+                      <select id="prof-select" multiple="multiple">
+                        {{#each profession}}
+                        <option value="{{ this }}"> {{ this }} </option>
+                        {{/each}}
+                      </select>
+
+                    </form>
+                  </div>
+                  <div class="filter-dd">
+                    <div class="filter-ttl">
+                      <h3>Рейтинг</h3>
+                      <a href="#" title="">Clear</a>
+                    </div>
+                    <div class="rg-slider">
+                      <input id="rating-input" class="rn-slider slider-input" type="hidden" value="0,10" />
+                    </div>
+                    <div class="rg-limit">
+                      <h4>0</h4>
+                      <h4>10</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--filter-secs end-->
+
+            </div>
+
+
+
+            {{!-- Central block --}}
+            <div class="col-lg-8">
+              <div class="main-ws-sec">
+                <div class="posts-section">
+                  {{#each prepods}}
+                  <div class="post-bar">
+                    <div class="post_topbar">
+                      <div class="usy-dt">
+
+                        <a href="preppage"><img src="" width="60" object-fit alt="Фото профиля"></a>
+                        <div class="usy-name">
+                          <a href="preppage/{{this._id}}">
+                            <h3>{{this.name.firstName}} {{this.name.lastName}} {{this.name.patr}}</h3>
+                          </a>
+                          <span><i class="zmdi zmdi-account-box-phone"> </i> {{this.profession}}</span>
+                        </div>
+                      </div>
+                      <div class="ed-opts">
+                        <ul class="">
+                          <li>
+                            <span>
+                              <h4 class="bold padding-bottom-7">Пока нет оценок</h4>
+                              <h2 class="bold padding-bottom-7">0/10</h2>
+                            </span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="epi-sec">
+                      <ul class="descp">
+                        <li>
+                          <span>Рейтинг преподавателя: Пока нет оценок
+                          </span>
+                        </li>
+                      </ul>
+
+                    </div>
+                    <div class="job_descp">
+                      <p>Место работы: {{this.region}},{{this.city}} </p>
+                      <span class="p-3">
+                        <h3>Учебное заведение: </h3>
+                        <h6>{{this.idUniver.name}}</h6>
+                      </span>
+
+                      <span>
+                        <h3>Область науки:</h3>
+                        <h6 class="pb-3">{{this.idScience.name}}</h6>
+                      </span>
+
+                      <span>
+                        <h3>Специальность: </h3>
+                        <h6 class="pb-3">{{this.idSpec.name}}</h6>
+                      </span>
+
+                      <p class="pt-3"> {{this.miniDescript}}</p><a href="preppage.php?id=<?= $activeprepod->id ?>"
+                        title=""> читать больше</a></p>
+                    </div>
+
+                  </div>
+                  {{/each}}
+                </div>
+                <!--posts-section end-->
+              </div>
+              <!--main-ws-sec end-->
+            </div>
+
+
+          </div>
+        </div><!-- main-section-data end-->
+      </div>
+    </div>
+  </main>
+</div>
+<!--theme-layout end-->
+
+{{!-- <script>
+  var availableCities = json_encode($availableCities);
+  var availableSciences = json_encode($availableSciences);
+  var availableUnivers = json_encode($availableUnivers);
+  var filtered = false;
+  var searched = false;
+</script> --}}
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+<script type="text/javascript" src="../../javascripts/jquery.range-min.js"></script>
+<script type="text/javascript" src="../../javascripts/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,435 @@
+<div class="wrapper">
+  <main>
+    <div class="main-section">
+      <div class="container">
+        <div class="main-section-data">
+          <div class="row">
+            <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+              <div class="main-left-sidebar no-margin">
+                <div class="user-data full-width">
+                  <div class="user-profile">
+                    <div class="username-dt">
+                      <div class="usr-pic">
+                        <img src="" alt="">
+                      </div>
+                    </div>
+                    <!--username-dt end-->
+                    <div class="user-specs mt-3">
+                      <h3>
+                        {{prepod.name.firstName}} {{prepod.name.lastName}} {{prepod.name.patr}}
+                      </h3>
+                      <span>{{prepod.profession}}</span>
+                    </div>
+                  </div>
+                  <!--user-profile end-->
+                  <ul class="user-fw-status">
+                    <li>
+                      <h4>Рейтинг по мнению студентов</h4>
+                      <div>
+                        <h2 class="bold padding-bottom-7">9 <small>/
+                            10</small></h2>
+                      </div>
+                    </li>
+                    <li>
+                      {{!-- <?if(!$isPrep):?> --}}
+                      <h4>
+                        <a class="btn" data-toggle="modal" data-target="#make-marks-model" title="">
+                          {{!-- <? if ($studentMarks[0]["value"]) : ?> --}}
+                          Изменить оценку
+                          {{!-- <? else : ?>  --}}
+                          Сделать оценку
+                          {{!-- <? endif ?> --}}
+                        </a>
+                      </h4>
+                      {{!-- <?else:?> --}}
+                      <h4>Только студенты могут ставить оценки</h4>
+                      {{!-- <?endif?> --}}
+                    </li>
+                  </ul>
+                </div>
+                {{!-- <? if (!$isPrep) : ?> --}}
+                <div class="modal fade" id="make-marks-model" tabindex="-1" role="dialog"
+                  aria-labelledby="make-marks-model" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          {{!-- <? if ($studentMarks[0]["value"]) : ?> --}}
+                          Изменить оценку
+                          {{!-- <? else : ?> --}}
+                          Поставить оценку
+                          {{!-- <? endif ?> --}}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form action="javascript:void(null);" id="make-mark-form">
+                        <input type="hidden" value="<?= $thisprep["id"] ?>" name="prepid">
+                        <div class="modal-body">
+                          {{!-- <? foreach ($studentMarks as $mark) : ?> --}}
+                          <div>
+                            <p><?= $mark["text"] ?></p>
+                            <label for="anwer<?= $mark["num"] ?>Range" id="answer<?= $mark["num"] ?>Label">Ваша
+                              оценка:
+                              {{!-- <? if ($mark["value"]) : ?><?= $mark['value'] ?>
+                              <? else : ?>5
+                              <? endif ?> --}}
+                              </label>
+                            <input name="answer<?= $mark["num"] ?>" type="range" class="custom-range"
+                              id="anwer<?= $mark[num] ?>Range" value="<? if ($mark[value]) :?><?= $mark[value] ?>
+                            <? else : ?>5
+                            <? endif ?>" min="1" max="10">
+                          </div>
+                          <p></p>
+                          <p></p>
+                          {{!-- <? endforeach ?> --}}
+
+                          <div>
+                            Ответить анонимно
+                            <input type="checkbox" name="anon"> 
+                            {{!-- <? if ($studentMarks[0]["anon"]) : ?>checked> --}}
+                            {{!-- <? endif ?>> --}}
+                          </div>
+
+                        </div>
+                        <div class="modal-footer d-flex flex-column">
+                          <button type="submit" id="btn-save-answers" class="btn btn-primary">
+                            {{!-- <? if ($studentMarks[0]["value"]) : ?> --}}
+                            Изменить
+                            {{!-- <? else : ?>  --}}
+                            Сохранить
+                            {{!-- <? endif ?> --}}
+                            </button>
+                          <button type="button" class="btn btn-secondary btn-block"
+                            data-dismiss="modal">Закрыть</button>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                {{!-- <? endif ?> --}}
+                <!--user-data end-->
+                <div class="suggestions full-width">
+                  <div class="sd-title">
+                    <h3>Недавно оценили</h3>
+                    <i class="la la-ellipsis-v"></i>
+                  </div>
+                  <!--sd-title end-->
+                  <div class="suggestions-list">
+
+                    {{!-- <? foreach ($studentsMarked as $mark) : ?>
+                    <?php
+                      if ($mark["img"] != "" && file_exists('./images/students_img/' . $mark["img"])) {
+                          $stud_img_path = ('./images/students_img/' . $mark["img"]);
+                      } else {
+                          $stud_img_path = ('./images/students_img/no_photo.png');
+                      }
+                      // echo $stud_img_path;
+                    ?> --}}
+                    <div class="suggestion-usd">
+                      <img src="" width="50" object-fit>
+                      <div class="sgt-text">
+                        {{!-- <?php ?> --}}
+                        <h4>
+                          {{!-- <? if ($mark["anon"]) : ?> --}}
+                          Аноним
+                          {{!-- <? else : ?><?= $mark["surname"] ?> <?= $mark["name"] ?> --}}
+                          имя
+                          {{!-- <? endif ?> --}}
+                        </h4>
+                        <span>
+                          Оценка: <
+                            {{!-- ?= $mark["mark"] ?> --}}
+                        </span>
+                      </div>
+                    </div>
+                    {{!-- <? endforeach ?> --}}
+                  </div>
+                  <!--suggestions-list end-->
+                </div>
+                <!--suggestions end-->
+              </div>
+              <!--main-left-sidebar end-->
+            </div>
+            <div class="col-lg-9 col-md-8 no-pd">
+              <div class="main-ws-sec">
+                <div class="posts-section">
+                  <div class="post-bar">
+                    <div class="post_topbar">
+                      <div class="usy-dt">
+                        <img src="" alt="" width="50">
+                        <div class="usy-name">
+                          <h3>
+                            {{prepod.name.firstName}} {{prepod.name.lastName}} {{prepod.name.patr}}
+                          </h3>
+                          <span><i class="zmdi zmdi-assignment-account"></i>{{prepod.profession}}</span>
+                        </div>
+                      </div>
+                    </div>
+              <!-- <div class="epi-sec">
+                      <ul class="descp">
+                          <li><img src="images/star.png" alt="" width='15'><span>ТОП
+                                  преподаватель</span></li>
+                      </ul>
+                    </div> -->
+                    <div class="job_descp">
+                      <ul class="job-dt">
+                        <li><a
+                            href='/?filters={"regions":["<?= addslashes($thisprep["region"]) ?>"],"rating":"0,10"}&search=&sort=fio'
+                            title=""><i class="zmdi zmdi-pin"></i> {{prepod.region}} </a>
+                        </li>
+                        <li><a
+                            href='/?filters={"regions":["<?= addslashes($thisprep["region"]) ?>"],"cities":["<?= addslashes($thisprep["city"]) ?>"],"rating":"0,10"}&search=&sort=fio'
+                            title=""><i class="zmdi zmdi-pin"></i> {{prepod.city}} </a></li>
+                      </ul>
+                      <h3>Место работы:</h3>
+                      <h3 class="pb-3"><a
+                          href='/?filters={"regions":["<?= addslashes($thisprep["region"]) ?>"],"cities":["<?= addslashes($thisprep["city"]) ?>"],"univers":["<?= addslashes($thisuniver->name) ?>"],"rating":"0,10"}&search=&sort=fio'
+                          title=""> {{prepod.idUniver.name}} </a></h3>
+                      <h6>Область наук:</h6>
+                      <h5 class="pb-3"><a
+                          href='/?filters={"sciences":["<?= addslashes($thisscience->name) ?>"],"rating":"0,10"}&search=&sort=fio'
+                          title=""> {{prepod.idScience.name}} </a></h5>
+                      <h6>Факультет: </h6>
+                      <h6 class="pb-3"><a
+                          href='/?filters={"sciences":["<?= addslashes($thisscience->name) ?>"],"specs":["<?= addslashes($thisspec->name) ?>"],"rating":"0,10"}&search=&sort=fio'
+                          title="">{{prepod.idSpec.name}}</a></h6>
+                      <h6>О себе:</h6>
+                      <p>{{prepod.descript}}</p>
+                      <h6>Образование:</h6>
+                      <p>Нет информации</p>
+                        {{!-- <?php
+                          $educ = json_decode($thisprep["education"]);
+                            if (!$educ) {
+                                echo "<span>Нет информации</span>";
+                            } else {
+                                foreach ($activeunivers as  $univer) {
+                                    if (in_array($univer->id, $educ)) {
+                                        echo "<p><i class='zmdi zmdi-pin'></i>";
+                                        echo $univer->name . "</p>";
+                                    }
+                                }
+                            }
+                        ?> --}}
+
+                      <h6>Прошлые места работы:</h6>
+                      <p>Нет информации</p>
+                        {{!-- <?php
+                          $oldWork = json_decode($thisprep["oldwork"]);
+                          if (!$oldWork) {
+                              echo "<span>Нет информации</span>";
+                          } else {
+                              foreach ($activeunivers as  $univer) {
+                                  if (in_array($univer->id, $oldWork)) {
+                                      echo "<p><i class='zmdi zmdi-pin'></i>";
+                                      echo $univer->name . "</p>";
+                                  }
+                              }
+                          }
+                        ?> --}}
+                    </div>
+                    <div class="job-status-bar">
+                      <ul class="like-com">
+                    </div>
+                  </div>
+                  <!--post-bar end-->
+
+                  <div class="post-bar">
+                    <div class="post_topbar d-flex justify-content-center">
+                      <div class="usy-dt">
+                        <div class="usy-name">
+                          <h1>Рейтинг оценок</h1>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="job_descp">
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="total-tab" data-toggle="tab" href="#totalMarks" role="tab"
+                            aria-controls="totalMarks" aria-selected="true">Общие</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="non-anon-marks-tab" data-toggle="tab" href="#nonanonMarks" role="tab"
+                            aria-controls="nonanonMarks" aria-selected="false">Не анонимные</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="anon-marks-tab" data-toggle="tab" href="#anonMarks" role="tab"
+                            aria-controls="anonMarks" aria-selected="false">Анонимные</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane fade show active" id="totalMarks" role="tabpanel">
+                          <div class="row">
+                            {{!-- <? foreach ($prepodMarks as $mark) : ?> --}}
+                            <div class="p-1 col-lg-6 col-md-6 col-6 col-sm-12">
+                              <div class="tile-progress tile-cyan">
+                                <div class="tile-header">
+                                  <h3>
+                                    текст
+                                    {{!-- <?= $mark["text"] ?> --}}
+                                  </h3>
+                                </div>
+                                <div class="tile-progressbar">
+                                  <span style="width: <?= $mark[mark] * 10 ?>%;"></span>
+                                </div>
+                                <div class="tile-footer">
+                                  <h4>
+                                    <span class="pct-counter">
+                                      {{!-- <?= $mark["mark"] ?> --}}
+                                    </span>
+                                    5 из 10
+                                  </h4>
+                                </div>
+                              </div>
+                            </div>
+                            {{!-- <? endforeach ?> --}}
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="nonanonMarks" role="tabpanel">
+                          <div class="row">
+                            {{!-- <? foreach ($nonAnonMarks as $mark) : ?> --}}
+                            <div class="p-1 col-lg-6 col-md-6 col-6 col-sm-12">
+                              <div class="tile-progress tile-cyan">
+                                <div class="tile-header">
+                                  <h3>
+                                    текст
+                                    {{!-- <?= $mark["text"] ?> --}}
+                                  </h3>
+                                </div>
+                                <div class="tile-progressbar">
+                                  <span style="width: <?= $mark[mark] * 10 ?>%;"></span>
+                                </div>
+                                <div class="tile-footer">
+                                  <h4>
+                                    <span class="pct-counter">
+                                      {{!-- <?= $mark["mark"] ?> --}}
+                                    </span>
+                                    4 из 10
+                                  </h4>
+                                </div>
+                              </div>
+                            </div>
+                            {{!-- <? endforeach ?> --}}
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="anonMarks" role="tabpanel">
+                          <div class="row">
+                            {{!-- <? foreach ($anonMarks as $mark) : ?> --}}
+                            <div class="p-1 col-lg-6 col-md-6 col-6 col-sm-12">
+                              <div class="tile-progress tile-cyan">
+                                <div class="tile-header">
+                                  <h3>
+                                    текст
+                                    {{!-- <?= $mark["text"] ?> --}}
+                                    </h3>
+                                </div>
+                                <div class="tile-progressbar">
+                                  <span style="width: <?= $mark["mark"] * 10 ?>%;"></span>
+                                </div>
+                                <div class="tile-footer">
+                                  <h4>
+                                    <span class="pct-counter">
+                                      {{!-- <?= $mark["mark"] ?> --}}
+                                    </span>
+                                   3 из 10
+                                  </h4>
+                                </div>
+                              </div>
+                            </div>
+                            {{!-- <? endforeach ?> --}}
+                          </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...
+                        </div>
+                      </div>
+                    </div>
+                    <!--post-bar end-->
+
+
+                    <div class="comment-section">
+                      <div class="post-comment">
+                        <div class="sd-title">
+                          <h3>Комментарии</h3>
+                        </div>
+                        <div class="comment_box mt-3">
+                          <form method="POST" class="d-flex" action="/models/postcomment.php">
+                            {{!-- <?if($isauth==true):?> --}}
+                            <input type="text" name="text" placeholder="Написать комментарий">
+                            <input type="hidden" name="prepid" value="<?= $thisprep[id] ?>">
+                            <div class="d-flex ml-2">
+                              <div class="d-flex justify-content-start align-items-center">
+                                <span>Анонимно</span>
+                                <input type="checkbox" style="max-width:50px" name="anon">
+                              </div>
+                              <button type="submit">Send</button>
+                            </div>
+                            {{!-- <?else:?> --}}
+                            <input type="text" name="text" placeholder="Вы не авторизованы" disabled>
+                            <input type="hidden" name="prepid" value="<?= $thisprep[id] ?>" disabled>
+                            <div class="d-flex ml-2">
+                              <div class="d-flex justify-content-start align-items-center">
+                                <span>Анонимно</span>
+                                <input type="checkbox" style="max-width:50px" name="anon" disabled>
+                              </div>
+                              <button type="submit" disabled>Send</button>
+                            </div>
+                            {{!-- <?endif?> --}}
+                          </form>
+                        </div>
+                      </div>
+
+                      <div class="comment-sec">
+                        <ul>
+                          <div class="mt-3"></div>
+                          {{!-- <? foreach ($comments as $comment) : ?> --}}
+                          <li>
+                            <div class="comment-list">
+                              <div class="bg-img">
+                                {{!-- <? if (!$comment["img"] || $comment["anon"] == 1) : ?> --}}
+                                <img src="images/students_img/no_photo.png" style="height:40px; width:40px">
+                                {{!-- <? else : ?> --}}
+                                <img src="images/students_img/" style="height:40px; width:40px">
+                                {{!-- <? endif ?> --}}
+                              </div>
+                              <div class="comment">
+                                <h3>
+                                  Аноним
+                                  {{!-- <? if ($comment["anon"] == 1) : ?>Аноним
+                                  <? else : ?> <?= $comment["name"] ?>
+                                  <?= $comment["surname"] ?>
+                                  <? endif ?> --}}
+                                </h3>
+                                <span><img src="images/clock.png"><abbr class="timeago"
+                                    title="<?= $comment['create_time'] ?>"></abbr></span>
+                                <p>
+                                  текст комментария
+                                  {{!-- <?= $comment["text"] ?> --}}
+                                </p>
+                              </div>
+                            </div>
+                            <!--comment-list end-->
+                          </li>
+                          {{!-- <? endforeach ?> --}}
+                        </ul>
+                      </div>
+                      <!--comment-sec end-->
+                    </div>
+                    <!--comment-section end-->
+                  </div>
+                </div>
+                <!--posts-section end-->
+              </div>
+              <!--main-ws-sec end-->
+            </div>
+
+          </div>
+        </div><!-- main-section-data end-->
+      </div>
+    </div>
+  </main>
+</div>

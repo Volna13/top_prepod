@@ -1,0 +1,360 @@
+<div class="resume">
+  <div class="page-header text-center">
+    <p class="page-title h5 pt-2">Здравствуйте, {{name}}</p>
+    <button class="btn btn-danger m-2" id="exit_btn">Выйти</button></>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <div class="card">
+          <h4 class="card-header">Личный кабинет преподавателя</h4>
+          <hr class="my-1 mb-3">
+          <div class="text-center mb-2">
+            <a class="btn btn-outline-info" href="cabinet/marks">Мои оценки</a>
+          </div>
+          <hr class="my-1 mb-3">
+
+          <div class="card-body">
+            <!-- Prepod cabinet -->
+            <div name="cabinet">
+
+              <h5>Личная информация</h5>
+              <hr class="my-1 mb-3">
+
+              <form action="" method="post" class="">
+                <div class="form-group row text-center" style="display: flex; flex-direction: column;">
+                  <img src="" class="img-thumbnail img-fluid mx-auto d-block rounded-circle" width="200" height="100"
+                    alt="Ваше фото">
+                  <input type="file" class="form-control-file mx-auto mt-3" name="prepImg" id="prepImg"
+                    area-describdby="ImgHelp" placeholder="Фото" value="<?= $thisprep->img ?>"
+                    accept="image/*,image/jpeg" style="width:300px">
+                  <a href="#" class="upload_files button m-3">Обновить фото</a>
+                </div>
+                <div id="ajax-reply-photo-error"
+                  class="form-group row ajax-reply-photo-error alert-danger text-center d-none"></div>
+                <div id="ajax-reply-photo-success"
+                  class="form-group row ajax-reply-photo-success alert-success text-center d-none"></div>
+              </form>
+
+              <form action="" method="post" class="">
+                <div class="form-group row">
+                  <label for="prepSurname" class="col-sm-2 col-form-label">Фамилия</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="prepSurname" id="prepSurname"
+                      area-describdby="SurnameHelp" placeholder="Фамилия" value=" {{prepod.name.lastName}} ">
+                    <small id="SurnameHelper" class="form-text text-muted mb-3">Введите новую фамилию, если вы хотите
+                      изменить её</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepName" class="col-sm-2 col-form-label">Имя</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="prepName" id="prepName" area-describdby="NameHelp"
+                      placeholder="Имя" value=" {{prepod.name.lastName}} ">
+                    <small id="NameHelper" class="form-text text-muted mb-3">Введите новое имя, если вы хотите
+                      изменить его</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepPatr" class="col-sm-2 col-form-label">Отчество</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" name="prepPatr" id="prepPatr" area-describdby="PatrHelp"
+                      placeholder="Отчество" value=" {{prepod.name.patr}} ">
+                    <small id="PatrHelper" class="form-text text-muted mb-3">Введите новое отчество, если вы хотите
+                      изменить его</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepEmail" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="email" class="form-control-plaintext text-muted" name="prepEmail" id="prepEmail"
+                      area-describdby="EmailHelp" placeholder="Email" value=" {{prepod.email}} " disabled>
+                    <!-- <small id="emailHelper" class="form-text text-muted mb-3">Если вы хотите изменить email, подайте заявку в обратной связи</small> -->
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepEmail" class="col-sm-2 col-form-label">Сменить пароль</label>
+                  <div class="col-sm-10">
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                      data-target="#exampleModal">Сменить пароль</button>
+                  </div>
+                </div>
+                <!-- Модальное окно смены пароля -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Смена пароля</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" method="post" class="">
+                          <div class="form-group row">
+                            <label for="prepOldPas" class="col-sm-4 col-form-label">Старый пароль</label>
+                            <div class="col-sm-8">
+                              <input type="password" class="form-control" name="prepOldPas" id="prepOldPas"
+                                area-describdby="OldPasHelp" placeholder="Старый пароль">
+                            </div>
+                          </div>
+
+                          <div class="form-group row">
+                            <label for="prepOldPas" class="col-sm-4 col-form-label">Новый пароль</label>
+                            <div class="col-sm-8">
+                              <input type="password" class="form-control" name="prepNewpas" id="prepNewPas"
+                                area-describdby="NewPasHelp" placeholder="Новый пароль">
+                            </div>
+                            <div class="alert-danger mt-2" id="errorBlockPrepodPass"></div>
+
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary">Изменить пароль</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /Модальное окно смены пароля -->
+
+                <div class="form-group row">
+                  <label for="studentInputCourse" class="col-sm-2 col-form-label">Ваша ученная
+                    степень(должность)</label>
+                  <div class="col-sm-10">
+                    <select class="form-control selectFaculty" id="SelectProf" area-describdby="ProfHelp"
+                      placeholder="Должность" style="width:100%">
+                      <option value='Учитель (I-категории)'>Учитель (I-категории)</option>
+                      <option value='Учитель (II-категории)'>Учитель (II-категории)</option>
+                      <option value='>Учитель (III-категории)'>Учитель (III-категории)</option>
+                      <option value='Мастер производственного обучения'>Мастер производственного обучения</option>
+                      <option value='Доктор наук'>Доктор наук</option>
+                      <option value='Доцент'>Доцент</option>
+                      <option value='Профессор'>Профессор</option>
+                    </select>
+                    <small id="ProfHelper" class="form-text text-muted mb-3">Какая у вас ученная степень?</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepodTAdescriptmin" class="col-sm-2 col-form-label">Краткое описание</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" name="prepodTAdescriptmin" id="prepodTAdescriptmin"
+                      area-describdby="descriptminHelp"> {{prepod.miniDescript}} </textarea>
+                    <small id="PatrHelper" class="form-text text-muted mb-3">Напишите самое главное о себе</small>
+
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepoddescript" class="col-sm-2 col-form-label">Полное описание</label>
+                  <div class="col-sm-10">
+                    <textarea class="form-control" name="prepoddescript" id="prepoddescript"
+                      area-describdby="descriptHelp" rows='4'> {{prepod.descript}} </textarea>
+                    <small id="PatrHelper" class="form-text text-muted mb-3">Напишите все то, о чем вы хотите
+                      рассказать</small>
+                  </div>
+                </div>
+
+                <h5>Место работы</h5>
+                <hr class="my-1 mb-3">
+
+                <div class="form-group row">
+                  <label for="prepodInputRegion" class="col-sm-2 col-form-label">Область</label>
+                  <div class="col-sm-10">
+                    <select class="form-control selectRegion" name="prepodInputRegion" id="prepodInputRegion"
+                      area-describdby="RegionHelp" placeholder="Область" style="width:100%">
+                      <option selected> {{prepod.region}} </option>
+                      {{#each regions}}
+                      <option value="{{ this }}"> {{ this }} </option>
+                      {{/each}}
+                    </select>
+                    <small id="emailHelper" class="form-text text-muted mb-3">Выберите или введите вашу
+                      область</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepodInputCity" class="col-sm-2 col-form-label">Город</label>
+                  <div class="col-sm-10">
+                    <select class="form-control selectCity  js-example-basic-single" name="prepodInputCity"
+                      id="prepodInputCity" area-describdby="CityHelp" placeholder="Город" style="width:100%">
+                      <option selected> {{prepod.city}} </option>
+                      {{#each cities}}
+                      <option value="{{ this }}"> {{ this }} </option>
+                      {{/each}}
+                    </select>
+                    <small id="emailHelper" class="form-text text-muted mb-3">Выберите или введите ваш город</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepUniver" class="col-sm-2 col-form-label">Учебное заведение</label>
+                  <div class="col-sm-10 selectUniver">
+                    <select class="form-control selectUniversity" id="prepodInputUniversity"
+                      area-describdby="univerHelp" placeholder="Учебное заведение" style="width:100%">
+                      <option selected> {{prepod.idUniver.name}} </option>
+                      {{#each univers}}
+                      <option value="{{ this._id }}"> {{ this.name}} </option>
+                      {{/each}}
+                    </select>
+                    <small id="univerHelper" class="form-text text-muted mb-3">Введите или выберите новое название
+                      учебного заведения в котором вы преподаёте, если вы хотите его изменить</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepPatr" class="col-sm-2 col-form-label">Наука</label>
+                  <div class="col-sm-10">
+                    <select class="form-control selectScience" id="prepodInputScience" area-describdby="ScienceHelp"
+                      placeholder="Область знаний" style="width:100%">
+                      <option selected> {{prepod.idScience.name}} </option>
+                      {{#each sciences}}
+                      <option value="{{ this._id }}"> {{ this.name }} </option>
+                      {{/each}}
+                    </select>
+                    <small id="PatrHelper" class="form-text text-muted mb-3">Выберите название науки, которую вы
+                      преподаёте, если вы хотите изменить её</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepPatr" class="col-sm-2 col-form-label">Специальность</label>
+                  <div class="col-sm-10">
+                    <select class="form-control selectFaculty" id="prepodInputSpec" area-describdby="SpecHelp"
+                      placeholder="Специальность" style="width:100%">
+                      <option selected>{{prepod.idSpec.name}}</option>
+                      {{#each specs}}
+                      <option value="{{ this._id }}"> {{ this.name }} </option>
+                      {{/each}}
+                    </select>
+                    <small id="PatrHelper" class="form-text text-muted mb-3">Выберите название специалньости, которую
+                      вы преподаёте, если вы хотите изменить её</small>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="prepUniver" class="col-sm-2 col-form-label">Где вы рабоатли раньше?</label>
+                  <div class="col-sm-10 selectWork">
+                    <select multiple="multiple" class="form-control selectOldUniversity js-example-responsive"
+                      id="prepodInputOldUniversity" name="prepodInputOldUniversity[]" area-describdby="EducuniverHelp"
+                      placeholder="Образование" style="width:100%">
+                      <?php
+                                                  foreach ($activeunivers as $activeuniver) : ?>
+                      <option id="optOldUniver<?php echo $activeuniver->id; ?>" value="<?php echo $activeuniver->id; ?>"
+                        <?php echo in_array($activeuniver->id, ($thisprep->oldwork ? json_decode($thisprep->oldwork) : [])) ? 'selected="selected"' : ''; ?>>
+                        <?php echo $activeuniver->name; ?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select>
+                    <small id="univerHelper" class="form-text text-muted mb-3">Введите или выберите университеты в
+                      которых вы работали</small>
+                  </div>
+                </div>
+
+                <h5>Образование</h5>
+                <hr class="my-1 mb-3">
+
+                <div class="form-group row">
+                  <label for="prepUniver" class="col-sm-2 col-form-label">Где вы учились?</label>
+                  <div class="col-sm-10 selectEdu">
+                    <select multiple="multiple" class="form-control selectEducUniversity js-example-responsive"
+                      id="prepodInputEducUniversity" name="prepodInputEducUniversity[]" area-describdby="EducuniverHelp"
+                      placeholder="Образование" style="width:100%">
+                      <?php
+                                                  foreach ($activeunivers as $activeuniver) : ?>
+                      <option id="optEduUniver<?php echo $activeuniver->id; ?>" value="<?php echo $activeuniver->id; ?>"
+                        <?php echo in_array($activeuniver->id, ($thisprep->education ? json_decode($thisprep->education) : [])) ? 'selected="selected"' : ''; ?>>
+                        <?php echo $activeuniver->name; ?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select>
+                    <small id="univerHelper" class="form-text text-muted mb-3">Введите или выберите университеты в
+                      которых вы получили образование</small>
+                  </div>
+                </div>
+
+                <hr class="my-1 mb-3">
+
+                <div class="alert-danger mt-2" id="errorBlockPrepod"></div>
+
+                <button type="button" class="btn btn-success my-4 mb-3" id="updPrepod">Сохранить изменения</button>
+              </form>
+            </div>
+            <!--/ Prepod cabinet -->
+          </div>
+        </div>
+        <div class="col-sm-1"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Page Content -->
+
+<!-- На страницу пытается попасть не студент -->
+<? else : ?>
+<div class="container erroracces">
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Ой, кажется вам сюда нельзя!</h4>
+    <p>Вам закрыт доступ к этой странице, пожалуйста перейдите на главную страницу.</p>
+    <hr>
+    <p class="mb-0"><a href="/"><button class="btn btn-success btn-block m-2" id="myart_btn">Вернуться на
+          главную</button></a></p>
+  </div>
+</div>
+{{!-- <?php
+      exit();
+  endif;
+  ?> --}}
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+<script type="text/javascript">
+  $("#studentInputUniversity").select2({
+    tags: true
+  });
+  $("#studentInputScience").select2({
+    tags: true
+  });
+  $("#studentInputSpec").select2({
+    tags: true
+  });
+
+  $("#studentInputCity").select2({
+    tags: true
+  });
+  $("#studentInputRegion").select2({
+    tags: true
+  });
+
+  $("#prepodInputCity").select2({
+    tags: true
+  });
+
+  $("#prepodInputRegion").select2({
+    tags: true
+  });
+
+  $("#prepodInputUniversity").select2({
+    tags: true
+  });
+
+  $("#prepodInputScience").select2({
+
+    tags: true
+  });
+
+  $("#prepodInputSpec").select2({
+    tags: true
+  });
+</script>

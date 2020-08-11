@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mt-3">
+          <div class="card-header bg-primary text-white"><i class="fa fa-envelope"></i> Связаться с нами.
+          </div>
+          <div class="card-body">
+            <form class="ajax-contact-form" action="">
+              <!-- Hidden Required Fields -->
+              <input type="hidden" name="project_name" value="Topprepod.com">
+              <input type="hidden" name="admin_email" value="dimov1011@gmail.com">
+              <input type="hidden" name="form_subject" value="Обратная связь от полльзователя topprepod.com">
+              <!-- END Hidden Required Fields -->
+
+              <div class="form-group">
+                <label for="name" class="mb-3">Имя</label>
+                <input type="text" class="form-control" id="name" name="Имя" aria-describedby="nameHelp"
+                  placeholder="Введите имя" required>
+              </div>
+
+              <div class="form-group">
+                <label for="name" class="mb-3">Телефон</label>
+                <input type="text" class="form-control" id="tel" name="Телефон" aria-describedby="telHelp"
+                  placeholder="Введите номер телефона" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="mb-3">Email адресс</label>
+                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                  placeholder="Введите email" required>
+                <small id="emailHelp" class="form-text text-muted"></small>
+              </div>
+
+              <div class="form-group">
+                <label for="message" class="mb-3">Сообщение</label>
+                <textarea class="form-control" id="message" name="Сообщение" rows="6" required></textarea>
+              </div>
+
+              <div class="mx-auto">
+                <input type="submit" name="submit" class="form-container__btn btn btn-primary text-right"
+                  value="Отправить">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-4">
+        <div class="card bg-light m-3">
+          <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Наши данные</div>
+          <div class="card-body">
+            <p>г. Одесса</p>
+            <p>ул. Среднефонтанская 30Б</p>
+            <p>Украина</p>
+            <p>Email : topprepod@gmai.com</p>
+            <p>Тел. +38 097 031 31 89</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

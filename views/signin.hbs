@@ -1,0 +1,224 @@
+<!-- Page Content -->
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      {{!-- <?
+              if (empty($_COOKIE['logi'])) :
+              ?> --}}
+
+      <!-- Первая колонка -->
+      <div class="col-2">
+      </div>
+
+      <!-- Вторая колонка -->
+      <div class="col-8 my-4">
+
+        <div class="alert alert-primary" role="alert">
+          <h5 class="display-5">Приветствуем вас на странице авторизации!</h5>
+          <hr class="my-1">
+          <p class="lead">Для того, чтобы пройти авторизацию, пожалуйста выберите тип пользователя: студент
+            или преподаватель. После, введите ваш email и пароль</p>
+        </div>
+
+        <div class="container">
+          <ul class="nav nav-tabs nav-justified bg-light" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active .bg-light" id="student-tab" data-toggle="tab" href="#student" role="tab"
+                aria-controls="student" aria-selected="true">Студент</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="prepod-tab" data-toggle="tab" href="#prepod" role="tab" aria-controls="prepod"
+                aria-selected="false">Преподаватель</a>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="myTabContent">
+
+            <!-- Форма авторизации для студента -->
+            <div class="tab-pane fade show active .bg-light" id="student" role="tabpanel" aria-labelledby="student-tab">
+              <div class="container-fluid">
+                <form action="" method="post">
+                  <div class="form-group">
+                    <div class="row" id="divAuthStud">
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <!-- Первая подколонка -->
+                          <div class="form-group row m-2">
+                            <label for="studentInputEmail" class="mt-2 col-sm-3 form-label">Email</label>
+                            <div class="col-sm-9">
+                              <input type="email" class="form-control" name="studentInputEmail" id="studentInputEmail"
+                                area-describdby="emailHelp" placeholder="Email">
+                              <small id="emailHelper" class="form-text text-muted mb-2">Введите адрес электроной
+                                почты</small>
+                            </div>
+
+                            <label for="studentInputPass" class="mt-2 col-sm-3 form-label">Ваш пароль</label>
+                            <div class="col-sm-9">
+                              <input type="password" class="form-control" name="studentInputPassword"
+                                id="studentInputPassword" placeholder="Пароль">
+                              <small id="PassHelper" class="form-text text-muted">Введите ваш пароль</small>
+                            </div>
+                          </div>
+
+                          <div class="alert-danger mt-2" id="errorBlockStud">
+                          </div>
+
+                          <!-- /Первая подколонка -->
+                        </div>
+                        <button type="button" class="btn btn-success my-4 btn-lg float-right" id="authStudent"
+                          post>Войти</button>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <!-- Вторая подколонка -->
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- container-fluid -->
+            </div>
+            <!--/?Форма авторизации для студента -->
+
+            <!-- Форма авторизации для преподавателя -->
+            <div class="tab-pane fade" id="prepod" role="tabpanel" aria-labelledby="prepod-tab">
+              <div class="container-fluid">
+                <form action="" method="post">
+                  <div class="form-froup">
+                    <div class="row">
+                      <!-- Первая колонка -->
+                      <div class="col-sm-6">
+                      </div>
+                      <!-- /Первая колонка -->
+                      <!-- Вторая колонка -->
+                      <div class="col-sm-6">
+                        <div class="row">
+                          <div class="form-group row m-2">
+                            <label for="prepodInputEmail" class="mt-2 col-sm-3 form-label">Email</label>
+                            <div class="col-sm-9">
+                              <input type="email" class="form-control" id="prepodInputEmail" area-describdby="emailHelp"
+                                placeholder="Email" required>
+                              <small id="emailHelper" class="form-text text-muted mb-2">Введите адресс электроной
+                                почты</small>
+                            </div>
+
+                            <label for="prepodInputPass" class="mt-2 col-sm-3 form-label">Ваш пароль</label>
+                            <div class="col-sm-9">
+                              <input type="password" class="form-control" id="prepodInputPassword" placeholder="Пароль"
+                                required>
+                              <small id="PassHelper" class="form-text text-muted">Введите ваш пароль</small>
+                            </div>
+                          </div>
+
+                          <div class="alert-danger mt-2" id="errorBlockPrepod">
+                          </div>
+
+                        </div>
+                        <button type="button" class="btn btn-success my-4 btn-lg float-right"
+                          id="authPrepod">Войти</button>
+                      </div>
+                      <!-- /Вторая колонка -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!--/ Форма авторизации для преподавателя -->
+          </div>
+
+          <!-- Третья колонка -->
+          <div class="col-2">
+          </div>
+          {{!-- <?
+                  else :
+                      ?> --}}
+          {{!-- <h2 class=" m-2">Привет, <?= @$_COOKIE['logi']/*вывод куки*/ ?></h2> --}}
+          <button class="btn btn-danger m-2" id="exit_btn">Выйти</button>
+          <a href="cabinet"><button class="btn btn-success btn-block m-2" id="myart_btn">Личный
+              кабинет</button>
+          </a>
+          {{!-- 
+          <?
+                  endif;
+                      ?> --}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+
+
+<script>
+
+  //Exit account
+  $('#exit_btn').click(function () {
+    $.ajax({
+      url: 'signin/logout',
+      type: 'POST',
+      cache: false,
+      data: {},
+      dataType: 'html',
+      success: function (data) {
+        window.location.href = 'signin';
+        //document.location.reload(true);
+      }
+    });
+  });
+
+  //Auth prepod
+  $("#authPrepod").click(function () {
+    var loginp = $("#prepodInputEmail").val();
+    var passp = $("#prepodInputPassword").val();
+
+    $.ajax({
+      url: "signin/prepod",
+      type: "POST",
+      cache: false,
+      data: {
+        'prepodInputEmail': loginp,
+        'prepodInputPassword': passp
+      },
+      dataType: "html",
+      success: function (data) {
+        if (data == "Готово") {
+          $("#authPrepod").text("Вы авторизованы");
+          $("#errorBlockPrepod").hide();
+          window.location.href = "cabinet";
+        } else $("#errorBlockPrepod").show();
+        console.log(data);
+        $("#errorBlockPrepod").text(data);
+      }
+    });
+  });
+</script>
+
+<script>
+  
+  //Auth student
+  $('#authStudent').click(function () {
+    var login = $('#studentInputEmail').val();
+    var pass = $('#studentInputPassword').val();
+
+    $.ajax({
+      url: 'signin/student',
+      type: 'POST',
+      cache: false,
+      data: {
+        'studentInputEmail': login,
+        'studentInputPassword': pass
+      },
+      dataType: 'html',
+      success: function (data) {
+        if (data == 'Готово') {
+          $('#authStudent').text('Вы авторизованы');
+          $('#errorBlockStud').hide();
+          window.location.href = 'cabinet';
+        } else
+          $('#errorBlockStud').show();
+        $('#errorBlockStud').text(data);
+      }
+    });
+  });
+</script>
